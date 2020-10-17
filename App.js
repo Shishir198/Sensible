@@ -52,7 +52,7 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Home') {
+            if (route.name === 'Issues') {
               iconName = focused
                 ? 'ios-home'
                 : 'ios-home';
@@ -71,15 +71,17 @@ export default function App() {
             }
 
             // You can return any component that you like here!
-            return <Ionicons  name={iconName} size={20} color={color} />;
+            return <Ionicons  name={iconName} size={23} color={color} />;
           },
         })}
+        // #ff007f
+        
         tabBarOptions={{
-          activeTintColor: '#f76f6f',
+          activeTintColor: '#ff3c00',
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Issues" component={Home} />
         
         <Tab.Screen name="Threads" component={Threads} />
         <Tab.Screen name="Post" component={Post} />

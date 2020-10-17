@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View,FlatList } from 'react-native';
+import { StyleSheet, Text, View,FlatList, Dimensions } from 'react-native';
 import Card from './Card'
 import data from './data'
-
+import { Ionicons,EvilIcons } from '@expo/vector-icons';
 export default function Home() {
 
  
@@ -19,6 +19,12 @@ export default function Home() {
   };
   return (
     <View style={styles.container}>
+    <View style={{margin:5,width : Dimensions.get('screen').width-20,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+        <EvilIcons name="navicon" size={30} color="black" />
+        <Text style={{fontSize:22,fontFamily:'sans-serif-medium',color:"black"}}>Today's Issues</Text>
+        <Ionicons  name="ios-search" size={25} color="black"/>
+    </View>
+   
     <FlatList
     data={data}
     renderItem={renderItem}
@@ -44,6 +50,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
 });
