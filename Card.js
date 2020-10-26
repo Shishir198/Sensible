@@ -1,20 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Dimensions } from 'react-native';
-import { StyleSheet, Text, View ,Image,ImageBackground} from 'react-native';
+import { StyleSheet, Text, View ,Image,ImageBackground,TouchableOpacity} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import cardDetails from './cardDetails'
 
 export default function Card(props) {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black,
+  });
                           //red     
-  const colors = ["green","#f76f6f","purple","brown","orange",]
+  const colors = ["green","#f76f6f","purple","orange",]
   
   return (
     <View style={{width:Dimensions.get('screen').width -10,marginTop:10,
     height:Dimensions.get('screen').height/2.2,backgroundColor:"white",elevation:5,marginTop:10,
-    borderBottomLeftRadius:20,borderTopLeftRadius:5,borderTopEndRadius:5,overflow: 'hidden',justifyContent:"space-between"}}>
+    borderBottomLeftRadius:20, borderBottomRightRadius:1,borderTopLeftRadius:5,borderTopEndRadius:5,overflow: 'hidden',justifyContent:"space-between"}}>
 
      {/* Background Image */}
+    
     <Image
         style={{width:Dimensions.get('screen').width ,
         height:Dimensions.get('screen').height/3.5,
@@ -22,6 +27,7 @@ export default function Card(props) {
         }}
         source={{uri: props.thumbnail}}
     />
+   
 {/* var item = items[Math.floor(Math.random() * items.length)];. */}
     <View style={{borderWidth:2.5,
     borderLeftColor:colors[Math.floor(Math.random() * colors.length)],borderEndColor:"white",

@@ -3,14 +3,22 @@ import React from 'react';
 import { StyleSheet, Text, View,FlatList } from 'react-native';
 import Home from './Home'
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import cardDetails from './cardDetails'
+import Card from './Card'
 
-function SettingsScreen() {
+
+const HomeStack = createStackNavigator();
+function HomeStackScreen() {
+  
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="Home" component={Home} />
+      {/* <HomeStack.Screen name="Card" component={Card} /> */}
+      <HomeStack.Screen name="cardDetails" component={cardDetails} />
+    </HomeStack.Navigator>
   );
 }
 function Threads() {
@@ -52,7 +60,7 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Issues') {
+            if (route.name === 'Updates') {
               iconName = focused
                 ? 'ios-home'
                 : 'ios-home';
@@ -75,18 +83,15 @@ export default function App() {
           },
         })}
         // #ff007f
-        
+        // #ed2121
         tabBarOptions={{
-          activeTintColor: '#ff3c00',
+          activeTintColor: '#211f1f',
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="Issues" component={Home} />
-        
+        <Tab.Screen name="Updates" component={HomeStackScreen} />
         <Tab.Screen name="Threads" component={Threads} />
         <Tab.Screen name="Post" component={Post} />
-        
-       
         <Tab.Screen name="Bookmarks" component={Bookmarks} />
         <Tab.Screen name="Hall of Fame" component={HallOFfame} />
       </Tab.Navigator>
