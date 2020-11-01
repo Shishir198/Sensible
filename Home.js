@@ -10,7 +10,15 @@ import Header from './Header'
 export default function Home({navigation}) {
     const renderItem = ({ item }) => {
         return (
-          <TouchableHighlight onPress={() =>navigation.navigate('cardDetails')}>
+          <TouchableHighlight onPress={() =>navigation.navigate('cardDetails',
+
+          {"image" : item.thumbnail,"title":"title","des" : "abcd",
+
+          "user_dp":item.user_dp,"username":item.username}
+
+          )}>
+
+
           <View style={{marginTop:5}}>
            
             <Card thumbnail={item.thumbnail}

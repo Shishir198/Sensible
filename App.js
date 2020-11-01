@@ -17,7 +17,9 @@ function HomeStackScreen() {
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={Home} />
       {/* <HomeStack.Screen name="Card" component={Card} /> */}
-      <HomeStack.Screen name="cardDetails" component={cardDetails} />
+      <HomeStack.Screen name="cardDetails" component={cardDetails} options={{
+          tabBarVisible: false
+        }} />
     </HomeStack.Navigator>
   );
 }
@@ -84,6 +86,7 @@ export default function App() {
         })}
         // #ff007f
         // #ed2121
+        // #211f1f
         tabBarOptions={{
           activeTintColor: '#211f1f',
           inactiveTintColor: 'gray',

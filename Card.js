@@ -28,13 +28,14 @@ export default function Card(props) {
         source={{uri: props.thumbnail}}
     />
    
-{/* var item = items[Math.floor(Math.random() * items.length)];. */}
+{/* borderLeftColor:colors[Math.floor(Math.random() * colors.length)] */}
     <View style={{borderWidth:2.5,
-    borderLeftColor:colors[Math.floor(Math.random() * colors.length)],borderEndColor:"white",
+    borderLeftColor:colors[Math.floor(Math.random() * colors.length)] ,borderEndColor:"white",
     borderTopColor:"white",borderBottomColor:"white"}}>
         <Text numberOfLines={2} ellipsizeMode="tail"  style={{fontFamily:"serif",
         marginLeft:7,fontSize:16,}}>
                 
+        Public college should be tuition free. Public college should be tuition free.
         Public college should be tuition free. Public college should be tuition free.
       
         
