@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { StyleSheet, Text, View,Button,FlatList, Dimensions,Image } from 'react-native';
 import Card from './Card'
 import data from './data'
@@ -7,20 +7,36 @@ import { Ionicons,EvilIcons } from '@expo/vector-icons';
 import { createStackNavigator } from 'react-navigation';
 import { fromLeft } from 'react-navigation-transitions';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Entypo } from '@expo/vector-icons';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 // import Share from "react-native-share";
+import { AntDesign } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 
 
 export default function cardDetails(props)
 {
-    console.log(props)
+    const [buttonStatus,setbuttonstatus] = useState({"agreed":0,"disagreed":0,"both":1})
+   
+    // useEffect(() => {
+    //     if(agreed && !disagreed)
+    //     {
+    //         setShowBar(0)
+    //     }
+    //     else if(disagreed && !agreed)
+    //     {
+    //         setShowBar(0)
+    //     }
+    // },[agreed,disagreed])
+
     return(
+        <View style={{flex:1}}>
         <ScrollView>
-        <View style={{flex:1,marginTop:20,backgroundColor:"white"}}>
+        <View style={{marginTop:20,backgroundColor:"white"}}>
             <View style={{backgroundColor:"white",elevation:0}}>
                 <Image
                     style={{width:Dimensions.get('screen').width ,
-                    height:Dimensions.get('screen').height/2.5,
+                    height:Dimensions.get('screen').height/3,
 
                     }}
                     source={{uri: props.route.params.image}}
@@ -32,7 +48,7 @@ export default function cardDetails(props)
 
             <View style={{flexDirection:"row",justifyContent:"space-between"}}>
                  
-                {/* DATE LABEL */}
+                {/* DATE */}
 
                 <View style={{backgroundColor:"purple",width:70,
                 height:20,marginLeft:5,marginTop:2,borderRadius:3,}}>
@@ -55,6 +71,8 @@ export default function cardDetails(props)
                   <MaterialIcons name="bookmark-border" size={24} color="purple" />
                     
                 </View>
+
+                
                
             </View>  
 
@@ -94,7 +112,7 @@ export default function cardDetails(props)
 
 
           </View>
-        
+          
           {/* Description  */}
         <Text style={{padding:8,fontSize:16,fontFamily:"sans-serif-light"}}>
 
@@ -112,7 +130,112 @@ Clearly related to the thesis: The sentences should all refer to the central ide
 Coherent: The sentences should be arranged in a logical manner and should follow a definite plan for development (Rosen and Behrens 119).
 Well-developed: Every idea discussed in the paragraph should be adequately explained and supported through evidence and details that work together to explain the paragraph’s controlling idea (Rosen and Behrens 119).
         </Text>
+
+       
         </View>
+       <View style={{height:40}}>
+       </View>
         </ScrollView>
+
+        {buttonStatus.both?
+        // Agree and Disagree button
+        <View style={{elevation:10,backgroundColor:"white",
+        width:Dimensions.get("screen").width,flexDirection:"row",
+        height:40,position:"absolute",bottom:0,
+        alignItems:"center",justifyContent:"space-around"}}>
+           
+           <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center",
+           }}>
+               <TouchableWithoutFeedback onPress={() => {
+                    setbuttonstatus({"agreed":1,"disagreed":0,"both":0})
+                    }}>
+                        <Entypo name="thumbs-up" size={20} color="green" />
+                    </TouchableWithoutFeedback>
+               
+               <TouchableWithoutFeedback onPress={() => {
+                    setbuttonstatus({"agreed":1,"disagreed":0,"both":0})
+                    }}>
+                    <Text style={{color:"green",fontWeight:"bold",fontSize:16}}>
+                         Agree
+                    </Text>
+                </TouchableWithoutFeedback>
+            </View>
+            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center",
+         }}>
+               <TouchableWithoutFeedback onPress={() => {
+                   setbuttonstatus({"agreed":0,"disagreed":1,"both":0})
+               }}>
+                <Text style={{color:"red",fontWeight:"bold",fontSize:16}}>
+                   Disagree
+                </Text>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => {
+                   setbuttonstatus({"agreed":0,"disagreed":1,"both":0})
+               }}>
+                   <Entypo name="thumbs-down" size={20} color="red" />
+               </TouchableWithoutFeedback>
+                
+            </View>
+            
+        </View> : null}
+                   
+
+
+         {buttonStatus.agreed ?  
+         
+        //  Only agreed
+         <View style={{elevation:10,backgroundColor:"white",
+        width:Dimensions.get("screen").width,flexDirection:"row",
+        height:40,position:"absolute",bottom:0,
+        alignItems:"center",justifyContent:"space-between"}}>
+           
+           <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                <TouchableWithoutFeedback onPress={() => {
+                        setbuttonstatus({"agreed":0,"disagreed":0,"both":1})
+                    }}>
+                    <MaterialIcons name="done" size={24} color="green" />
+                </TouchableWithoutFeedback>
+              
+               <TouchableWithoutFeedback onPress={() => {
+                   setbuttonstatus({"agreed":0,"disagreed":0,"both":1})
+               }}>
+                    <Text style={{color:"green",fontWeight:"bold",fontSize:15}}>
+                        Agreed
+                    </Text>
+                </TouchableWithoutFeedback>
+            </View>
+            
+            
+        </View>: null}
+        
+
+        {buttonStatus.disagreed?
+        // disagreeed
+        <View style={{elevation:10,backgroundColor:"white",
+        width:Dimensions.get("screen").width,flexDirection:"row",
+        height:40,position:"absolute",bottom:0,
+        alignItems:"center",justifyContent:"space-between"}}>
+           
+            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+
+                    <TouchableWithoutFeedback onPress={() => {
+                        setbuttonstatus({"agreed":0,"disagreed":0,"both":1})
+                        }}>
+                        <Entypo name="circle-with-cross" size={24} color="red" />
+                   </TouchableWithoutFeedback>
+                
+                    <TouchableWithoutFeedback onPress={() => {
+                        setbuttonstatus({"agreed":0,"disagreed":0,"both":1})
+                        }}>
+                        <Text style={{color:"red",fontWeight:"bold",fontSize:15}}>
+                        Disagreed
+                        </Text>
+                    </TouchableWithoutFeedback>
+                
+            </View>
+            
+        </View>: null}
+      </View>
+        
     )
 }

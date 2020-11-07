@@ -26,8 +26,8 @@ export default function Header()
         flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
 
             <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-around"}}>
-                <Feather name="menu" size={24} color="black" />
-                <Text style={{color:"black",fontSize:21,fontFamily:"sans-serif",marginLeft:10}}>26th October</Text>
+                <Feather name="menu" size={24} color="purple" />
+                <Text style={{color:"purple",fontSize:21,fontFamily:"sans-serif",marginLeft:10}}>2nd November</Text>
             </View>
 
             <View style={{width:70,flexDirection:"row",alignItems:"center",justifyContent:'space-between'}}>

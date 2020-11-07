@@ -8,6 +8,7 @@ import Header from './Header'
 
 
 export default function Home({navigation}) {
+ 
     const renderItem = ({ item }) => {
         return (
           <TouchableHighlight onPress={() =>navigation.navigate('cardDetails',
