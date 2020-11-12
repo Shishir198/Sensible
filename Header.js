@@ -22,15 +22,15 @@ export default function Header()
         Poppins,
       });
     return(
-        <View style={{margin:5,width : Dimensions.get('screen').width-20,
-        flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+        <View style={{width : Dimensions.get('screen').width-20,height:40,
+        flexDirection:"row",alignItems:"center",justifyContent:"space-between",margin:3}}>
 
-            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-around"}}>
+            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-around",paddingTop:10}}>
                 <Feather name="menu" size={24} color="purple" />
                 <Text style={{color:"purple",fontSize:21,fontFamily:"sans-serif",marginLeft:10}}>2nd November</Text>
             </View>
 
-            <View style={{width:70,flexDirection:"row",alignItems:"center",justifyContent:'space-between'}}>
+            <View style={{width:70,flexDirection:"row",alignItems:"center",justifyContent:'space-between',paddingTop:10}}>
                 <Ionicons  name="ios-search" size={27} color="grey"/>
                 <Image
                 style={{width:30,height:30,borderRadius:15}}

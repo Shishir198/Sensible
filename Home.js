@@ -35,8 +35,8 @@ export default function Home({navigation}) {
       };
       return (
         <View style={styles.container}>
+        <StatusBar hidden={true} />
         <Header/>
-        {/* <Text style={{color:"white",height:4}}>.</Text> */}
         <FlatList
         data={data}
         renderItem={renderItem}
@@ -60,7 +60,7 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop:20,
+  
     
     backgroundColor: '#fff',
     alignItems: 'center',

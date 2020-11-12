@@ -14,7 +14,8 @@ const HomeStack = createStackNavigator();
 function Tabs() {
   
   return (
-    
+     
+      
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -28,7 +29,7 @@ function Tabs() {
             else if(route.name == "Threads"){
               iconName = focused ? 'ios-chatbubbles' : 'ios-chatbubbles';
             }
-            else if (route.name === 'Bookmarks') {
+            else if (route.name === 'Saved') {
               iconName = focused ? 'ios-bookmark' : 'ios-bookmark';
             }
             else if (route.name === 'Post') {
@@ -53,7 +54,7 @@ function Tabs() {
         <Tab.Screen name="Updates" component={Home} />
         <Tab.Screen name="Threads" component={Threads} />
         <Tab.Screen name="Post" component={Post} />
-        <Tab.Screen name="Bookmarks" component={Bookmarks} />
+        <Tab.Screen name="Saved" component={Bookmarks} />
         <Tab.Screen name="Hall of Fame" component={HallOFfame} />
       </Tab.Navigator>
   );

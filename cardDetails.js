@@ -12,8 +12,8 @@ import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handl
 // import Share from "react-native-share";
 import { AntDesign } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
-
-
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function cardDetails(props)
 {
     const [buttonStatus,setbuttonstatus] = useState({"agreed":0,"disagreed":0,"both":1})
@@ -32,11 +32,11 @@ export default function cardDetails(props)
     return(
         <View style={{flex:1}}>
         <ScrollView>
-        <View style={{marginTop:20,backgroundColor:"white"}}>
+        <View style={{backgroundColor:"white"}}>
             <View style={{backgroundColor:"white",elevation:0}}>
                 <Image
                     style={{width:Dimensions.get('screen').width ,
-                    height:Dimensions.get('screen').height/3,
+                    height:Dimensions.get('screen').height/2.8,
 
                     }}
                     source={{uri: props.route.params.image}}
@@ -133,48 +133,82 @@ Well-developed: Every idea discussed in the paragraph should be adequately expla
 
        
         </View>
-       <View style={{height:40}}>
-       </View>
+
+        <View style={{height:40}}>
+            {/* Providing a white space for bottom buttons */}
+            {/* To prevent overlapping bottom bar and description */}
+        </View>
+
         </ScrollView>
 
+
         {buttonStatus.both?
-        // Agree and Disagree button
+                                        // Agree and Disagree button
         <View style={{elevation:10,backgroundColor:"white",
         width:Dimensions.get("screen").width,flexDirection:"row",
         height:40,position:"absolute",bottom:0,
         alignItems:"center",justifyContent:"space-around"}}>
            
-           <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center",
-           }}>
+           <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",}}>
                <TouchableWithoutFeedback onPress={() => {
                     setbuttonstatus({"agreed":1,"disagreed":0,"both":0})
                     }}>
-                        <Entypo name="thumbs-up" size={20} color="green" />
+                        <Entypo name="thumbs-up" size={24} color="green" />
                     </TouchableWithoutFeedback>
                
                <TouchableWithoutFeedback onPress={() => {
                     setbuttonstatus({"agreed":1,"disagreed":0,"both":0})
                     }}>
-                    <Text style={{color:"green",fontWeight:"bold",fontSize:16}}>
+                    <Text style={{color:"green",fontSize:9}}>
                          Agree
                     </Text>
                 </TouchableWithoutFeedback>
             </View>
-            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center",
-         }}>
-               <TouchableWithoutFeedback onPress={() => {
-                   setbuttonstatus({"agreed":0,"disagreed":1,"both":0})
-               }}>
-                <Text style={{color:"red",fontWeight:"bold",fontSize:16}}>
-                   Disagree
-                </Text>
-                </TouchableWithoutFeedback>
+                    
+
+
+
+
+
+                                    {/* People Views */}
+
+                <View style={{alignItems:"center",justifyContent:"center"}}>
+
+                    <View>
+                    <Ionicons name="ios-chatbubbles" size={24} color="purple" />
+                    </View>
+
+                    <View>
+                            <Text style={{color:"purple",fontSize:9}}>
+                                Views
+                            </Text>
+                    </View>
+                        
+                    
+                </View>
+
+
+
+
+
+
+
+                
+
+            <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",}}>
+               
                 <TouchableWithoutFeedback onPress={() => {
                    setbuttonstatus({"agreed":0,"disagreed":1,"both":0})
                }}>
-                   <Entypo name="thumbs-down" size={20} color="red" />
+                   <Entypo name="thumbs-down" size={24} color="red" />
                </TouchableWithoutFeedback>
-                
+               <TouchableWithoutFeedback onPress={() => {
+                   setbuttonstatus({"agreed":0,"disagreed":1,"both":0})
+               }}>
+                <Text style={{color:"red",fontSize:9}}>
+                   Disagree
+                </Text>
+                </TouchableWithoutFeedback>
             </View>
             
         </View> : null}
@@ -186,7 +220,7 @@ Well-developed: Every idea discussed in the paragraph should be adequately expla
         //  Only agreed
          <View style={{elevation:10,backgroundColor:"white",
         width:Dimensions.get("screen").width,flexDirection:"row",
-        height:40,position:"absolute",bottom:0,
+        height:50,position:"absolute",bottom:0,
         alignItems:"center",justifyContent:"space-between"}}>
            
            <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
@@ -204,7 +238,20 @@ Well-developed: Every idea discussed in the paragraph should be adequately expla
                     </Text>
                 </TouchableWithoutFeedback>
             </View>
-            
+            <View style={{alignItems:"center",justifyContent:"center",marginRight:30}}>
+
+                    <View>
+                    <Ionicons name="ios-chatbubbles" size={24} color="purple" />
+                    </View>
+
+                    <View>
+                            <Text style={{color:"purple",fontSize:9}}>
+                                Views
+                            </Text>
+                    </View>
+                        
+                    
+                </View>
             
         </View>: null}
         
@@ -213,7 +260,7 @@ Well-developed: Every idea discussed in the paragraph should be adequately expla
         // disagreeed
         <View style={{elevation:10,backgroundColor:"white",
         width:Dimensions.get("screen").width,flexDirection:"row",
-        height:40,position:"absolute",bottom:0,
+        height:50,position:"absolute",bottom:0,
         alignItems:"center",justifyContent:"space-between"}}>
            
             <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
